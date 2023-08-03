@@ -108,9 +108,11 @@ def calculate_MME(rxcui, d):
     response = requests.request("GET", url, params=querystring)
     r = response.json()
     mme = 0
-    for ingredient in r["rxcuiStatusHistory"]["definitionalFeatures"][
-        "ingredientAndStrength"
-    ]:
+    for ingredient in (
+        r.get("rxcuiStatusHistory", {})
+        .get("definitionalFeatures", {})
+        .get("ingredientAndStrength", [])
+    ):
         baseName = ingredient["baseName"]
         value = ingredient["numeratorValue"]
         unit = ingredient["numeratorUnit"]
