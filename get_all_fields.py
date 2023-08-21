@@ -22,18 +22,18 @@ MME_TABLE["butorphanol"] = 7
 MME_TABLE["codeine"] = 0.15
 MME_TABLE["dihydrocodeine"] = 0.25
 MME_TABLE["hydrocodone"] = 4
-MME_TABLE["hydromorphone"] = 4
+MME_TABLE["hydromorphone"] = 5
 MME_TABLE["levomethadyl acetate"] = 8
 MME_TABLE["levorphanol tartrate"] = 11
 MME_TABLE["meperidine"] = 0.1
-MME_TABLE["methadone"] = 3
+MME_TABLE["methadone"] = 4.7
 MME_TABLE["morphine"] = 1
 MME_TABLE["opium"] = 1
 MME_TABLE["oxycodone"] = 1.5
 MME_TABLE["oxymorphone"] = 3
 MME_TABLE["pentazocine"] = 0.37
 MME_TABLE["tapentadol"] = 0.4
-MME_TABLE["tramadol"] = 0.1
+MME_TABLE["tramadol"] = 0.2
 
 
 def get_rxcui_from_ndc(ndc):
@@ -146,7 +146,7 @@ def calculate_MME(rxcui, d):
             except:
                 pass
             if ingredient["denominatorUnit"] == "HR":
-                d["MME_Conversion_Factor"] = 7200
+                d["MME_Conversion_Factor"] = 2400
             elif "Nasal Product" in doseForm:
                 d["MME_Conversion_Factor"] = 160
             elif "Mucosal Product" in doseForm:
